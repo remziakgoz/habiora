@@ -66,7 +66,7 @@ header.stuck{border-bottom-color:var(--line); box-shadow:0 10px 26px -24px rgba(
 .brand img{width:38px; height:38px; border-radius:11px; transition:width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1), border-radius .35s ease}
 nav{margin-left:auto; display:flex; align-items:center; gap:1.9rem}
 nav a{text-decoration:none; color:var(--muted); font-weight:600; font-size:.98rem}
-nav a:hover{color:var(--ink)}
+nav a:not(.btn):hover{color:var(--ink)}
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
   font-family:"Fredoka"; font-weight:600; font-size:1rem; border:0; cursor:pointer;
@@ -218,6 +218,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 .foot-col a:hover{color:#fff}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.12); margin-top:2.8rem; padding-top:1.4rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; font-size:.88rem; color:#8B9C88}
 
+
 /* ---------- hover ---------- */
 @media (hover:hover){
   .step,.gallery figure,.feature,.pair article,.plan,.store,.hero-shot{
@@ -345,6 +346,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
   <div class="wrap">
     <h2>From a seed to a full canopy.</h2>
     <p class="lede" style="margin-top:1rem">Three things to do, and only one of them is daily.</p>
+
     <div class="steps">
       <article class="step">
         <div class="shot"><img src="images/steps/plant.png" alt="Naming a habit Running and giving it an orange tree" width="560" height="560" loading="lazy"></div>
