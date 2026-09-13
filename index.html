@@ -7,9 +7,15 @@
 <meta name="description" content="Habiora turns every habit into a tree. Keep it up and your forest fills in. Coming soon to iPhone and Android — join the waitlist.">
 <link rel="icon" href="images/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="canonical" href="https://habiora.co/">
 <meta property="og:title" content="Habiora — Grow your habits into a forest">
 <meta property="og:description" content="Every habit is a tree. Keep it up and your forest fills in. Coming soon — join the waitlist.">
-<meta property="og:image" content="images/illustration.jpg">
+<meta property="og:image" content="https://habiora.co/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://habiora.co/">
+<meta property="og:site_name" content="Habiora">
+<meta name="twitter:image" content="https://habiora.co/images/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -551,7 +557,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
       <div class="foot-col">
         <h4>Support</h4>
         <a href="#faq">FAQ</a>
-        <a href="mailto:habiora.app@proton.me">Contact</a>
+        <a href="mailto:hello@habiora.co">Contact</a>
       </div>
       <div class="foot-col">
         <h4>Legal</h4>
@@ -619,7 +625,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (form.querySelector("input[name=_gotcha]").value) return;
 
       if (!WAITLIST_ENDPOINT) {
-        msg.textContent = "The waitlist isn't connected yet. Email habiora.app@proton.me and we'll add you by hand.";
+        msg.textContent = "The waitlist isn't connected yet. Email hello@habiora.co and we'll add you by hand.";
         msg.classList.add("err");
         return;
       }
@@ -644,7 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
         msg.textContent = "You're on the list. Watch your inbox on launch day.";
         msg.classList.add("ok");
       } catch (err) {
-        msg.textContent = "That didn't go through. Try again, or email habiora.app@proton.me.";
+        msg.textContent = "That didn't go through. Try again, or email hello@habiora.co.";
         msg.classList.add("err");
       } finally {
         button.disabled = false;
