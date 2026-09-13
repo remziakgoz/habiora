@@ -36,7 +36,7 @@
   --shadow:0 18px 40px -24px rgba(28,58,42,.45);
 }
 *{box-sizing:border-box}
-html,body{overflow-x:hidden}
+body{overflow-x:clip}
 html{scroll-behavior:smooth}
 body{
   margin:0; background:var(--cream); color:var(--ink);
@@ -218,16 +218,15 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 
 /* ---------- hover ---------- */
 @media (hover:hover){
-  .step,.gallery figure,.feature,.pair article,.plan,.store{
+  .step,.gallery figure,.feature,.pair article,.plan,.store,.hero-shot{
     transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, border-color .3s ease;
   }
-  .step .shot img,.gallery .frame img{transition:transform .55s cubic-bezier(.22,1,.36,1)}
-  .step:hover,.gallery figure:hover{transform:translateY(-6px)}
-  .step:hover{box-shadow:0 24px 44px -28px rgba(28,58,42,.55)}
+  .step:hover{transform:translateY(-6px) scale(1.025); box-shadow:0 26px 46px -28px rgba(28,58,42,.55)}
+  .gallery figure:hover{transform:translateY(-6px) scale(1.025)}
   .gallery figure:hover .frame{box-shadow:0 22px 40px -26px rgba(28,58,42,.5)}
-  .step:hover .shot img,.gallery figure:hover .frame img{transform:scale(1.06)}
-  .feature:hover,.pair article:hover,.plan:hover{transform:translateY(-4px); border-color:#CFDAC7; box-shadow:0 18px 34px -28px rgba(28,58,42,.5)}
+  .feature:hover,.pair article:hover,.plan:hover{transform:translateY(-4px) scale(1.015); border-color:#CFDAC7; box-shadow:0 18px 34px -28px rgba(28,58,42,.5)}
   .store:hover{transform:translateY(-2px); border-color:#C7D1BB}
+  .hero-shot:hover{transform:scale(1.03)}
   details:hover{border-color:#CFDAC7}
 }
 
@@ -238,8 +237,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal,.loaded .reveal{opacity:1; transform:none; transition:none}
-  .btn:hover,.step:hover,.gallery figure:hover,.feature:hover,.pair article:hover,.plan:hover,.store:hover{transform:none}
-  .step:hover .shot img,.gallery figure:hover .frame img{transform:none}
+  .btn:hover,.step:hover,.gallery figure:hover,.feature:hover,.pair article:hover,.plan:hover,.store:hover,.hero-shot:hover{transform:none}
   .bar,.brand,.brand img,nav .btn{transition:none}
 }
 :focus-visible{outline:3px solid var(--mint-b); outline-offset:3px; border-radius:6px}
