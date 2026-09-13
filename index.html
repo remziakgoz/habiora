@@ -36,6 +36,7 @@
   --shadow:0 18px 40px -24px rgba(28,58,42,.45);
 }
 *{box-sizing:border-box}
+html,body{overflow-x:hidden}
 html{scroll-behavior:smooth}
 body{
   margin:0; background:var(--cream); color:var(--ink);
@@ -44,12 +45,12 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 h1,h2,h3,.display{font-family:"Fredoka",system-ui,sans-serif; font-weight:600; line-height:1.12; letter-spacing:-.01em; margin:0}
-h1{font-size:clamp(2.5rem,5.6vw,4.1rem)}
+h1{font-size:clamp(2.4rem,5vw,3.8rem); text-wrap:balance; max-width:16ch}
 h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
 h3{font-size:1.22rem}
 p{margin:0}
 a{color:inherit}
-img{max-width:100%; display:block}
+img{max-width:100%; height:auto; display:block}
 .wrap{width:min(1120px,100% - 2.5rem); margin-inline:auto}
 .lede{color:var(--muted); font-size:clamp(1.02rem,1.5vw,1.18rem); max-width:56ch}
 section{padding:clamp(4.5rem,9vw,7.5rem) 0}
@@ -108,23 +109,23 @@ nav .btn{padding:.68rem 1.25rem; font-size:.95rem}
 /* phone */
 .phone-stage{position:relative; display:flex; justify-content:center}
 .phone-stage::before{
-  content:""; position:absolute; inset:-12% -6% 8%; border-radius:50%;
+  content:""; position:absolute; inset:-6% 4% 6%; border-radius:50%;
   background:radial-gradient(circle at 50% 45%, rgba(110,231,183,.38), rgba(243,238,229,0) 62%);
 }
 .phone{
-  position:relative; width:min(310px,78vw); border-radius:44px; padding:10px;
+  position:relative; width:min(288px,74vw); border-radius:42px; padding:9px;
   background:linear-gradient(160deg,#2F4A38,#1B3324);
   box-shadow:0 40px 70px -34px rgba(24,52,36,.65);
 }
 .phone img{border-radius:35px}
 .bubble{
-  position:absolute; width:54px; height:54px; border-radius:50%; background:#fff;
+  position:absolute; z-index:2; width:52px; height:52px; border-radius:50%; background:#fff;
   display:grid; place-items:center; box-shadow:0 12px 24px -14px rgba(28,58,42,.6);
 }
 .bubble svg{width:26px; height:26px; stroke-width:1.9; fill:none; stroke-linecap:round; stroke-linejoin:round}
-.b1{top:8%; left:-4%; color:var(--t-orange)}
-.b2{top:34%; right:-6%; color:var(--t-purple)}
-.b3{bottom:16%; left:-7%; color:var(--t-green)}
+.b1{top:9%; left:-26px; color:var(--t-orange)}
+.b2{top:40%; right:-24px; color:var(--t-purple)}
+.b3{bottom:17%; left:-20px; color:var(--t-green)}
 
 /* ---------- contrast pair ---------- */
 .pair{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:3rem}
@@ -273,7 +274,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
   <div class="wrap hero-grid">
     <div>
       <span class="tagline reveal"><span class="dot"></span> Coming soon to iPhone and Android</span>
-      <h1 class="reveal">Every habit you keep<br>becomes a tree.</h1>
+      <h1 class="reveal">Every habit you keep becomes a tree.</h1>
       <p class="lede reveal">Habiora is a habit tracker you can actually see. Mark a habit today and its tree grows a little. Keep going and a bare patch of soil turns into your own forest.</p>
 
       <div class="waitlist reveal" id="waitlist">
@@ -302,10 +303,10 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
     <div class="phone-stage reveal">
       <div class="phone">
         <img src="images/screens/forest.png" alt="The Habiora home screen showing a forest of eight coloured trees and today's habits" width="620" height="1347" fetchpriority="high">
+        <div class="bubble b1"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M4 14l4-1 8-8 3 3-8 8-1 4z"/><path d="M3 20h18"/></svg></div>
+        <div class="bubble b2"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M6 8v8M18 8v8M4 10v4M20 10v4M6 12h12"/></svg></div>
+        <div class="bubble b3"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M19 5c0 7-5 12-12 12-2 0-3-1-3-1s4-1 6-4c-3 0-5-2-5-2s8 0 14-5z"/></svg></div>
       </div>
-      <div class="bubble b1"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M4 14l4-1 8-8 3 3-8 8-1 4z"/><path d="M3 20h18"/></svg></div>
-      <div class="bubble b2"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M6 8v8M18 8v8M4 10v4M20 10v4M6 12h12"/></svg></div>
-      <div class="bubble b3"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M19 5c0 7-5 12-12 12-2 0-3-1-3-1s4-1 6-4c-3 0-5-2-5-2s8 0 14-5z"/></svg></div>
     </div>
   </div>
 </section>
