@@ -55,6 +55,7 @@ img{max-width:100%; height:auto; display:block}
 .wrap{width:min(1120px,100% - 2.5rem); margin-inline:auto}
 .lede{color:var(--muted); font-size:clamp(1.02rem,1.5vw,1.18rem); max-width:56ch}
 section{padding:clamp(4.5rem,9vw,7.5rem) 0}
+section[id],#waitlist{scroll-margin-top:96px}
 
 /* ---------- header ---------- */
 header{position:sticky; top:0; z-index:50; backdrop-filter:blur(12px); background:rgba(243,238,229,.82); border-bottom:1px solid transparent; transition:border-color .25s}
@@ -512,7 +513,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 </section>
 
 <!-- FINAL CTA -->
-<section class="final">
+<section class="final" id="join">
   <div class="wrap">
     <h2>Plant the first one.</h2>
     <p class="lede">Join the waitlist and you'll be growing your forest the day Habiora lands.</p>
@@ -576,6 +577,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const onScroll = () => header.classList.toggle("stuck", window.scrollY > 24);
   onScroll();
   window.addEventListener("scroll", onScroll, {passive:true});
+
+  document.querySelectorAll('a[href="#waitlist"]').forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const forms = [...document.querySelectorAll(".waitlist")];
+      const mid = window.scrollY + window.innerHeight / 2;
+      const target = forms.reduce((best, el) =>
+        Math.abs(el.getBoundingClientRect().top + window.scrollY - mid) <
+        Math.abs(best.getBoundingClientRect().top + window.scrollY - mid) ? el : best);
+      const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      target.scrollIntoView({behavior: smooth ? "smooth" : "auto", block: "center"});
+      const input = target.querySelector("input[type=email]");
+      setTimeout(() => input && input.focus({preventScroll: true}), smooth ? 600 : 0);
+    });
+  });
 
   document.querySelectorAll(".wl-form").forEach(form => {
     const msg = form.parentElement.querySelector(".form-msg");
