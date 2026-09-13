@@ -58,10 +58,10 @@ section{padding:clamp(4.5rem,9vw,7.5rem) 0}
 
 /* ---------- header ---------- */
 header{position:sticky; top:0; z-index:50; backdrop-filter:blur(12px); background:rgba(243,238,229,.82); border-bottom:1px solid transparent; transition:border-color .25s}
-header.stuck{border-bottom-color:var(--line)}
-.bar{display:flex; align-items:center; gap:2rem; padding:.85rem 0}
-.brand{display:flex; align-items:center; gap:.6rem; font-family:"Fredoka"; font-weight:600; font-size:1.3rem; text-decoration:none}
-.brand img{width:38px; height:38px; border-radius:11px}
+header.stuck{border-bottom-color:var(--line); box-shadow:0 10px 26px -24px rgba(28,58,42,.7)}
+.bar{display:flex; align-items:center; gap:2rem; padding:.9rem 0; transition:padding .35s cubic-bezier(.22,1,.36,1)}
+.brand{display:flex; align-items:center; gap:.6rem; font-family:"Fredoka"; font-weight:600; font-size:1.3rem; text-decoration:none; transition:font-size .35s cubic-bezier(.22,1,.36,1)}
+.brand img{width:38px; height:38px; border-radius:11px; transition:width .35s cubic-bezier(.22,1,.36,1), height .35s cubic-bezier(.22,1,.36,1), border-radius .35s ease}
 nav{margin-left:auto; display:flex; align-items:center; gap:1.9rem}
 nav a{text-decoration:none; color:var(--muted); font-weight:600; font-size:.98rem}
 nav a:hover{color:var(--ink)}
@@ -75,7 +75,11 @@ nav a:hover{color:var(--ink)}
 .btn-ink{background:var(--ink); color:#F6F3EC}
 .btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(0)}
-nav .btn{padding:.68rem 1.25rem; font-size:.95rem}
+nav .btn{padding:.68rem 1.25rem; font-size:.95rem; transition:padding .35s cubic-bezier(.22,1,.36,1), font-size .35s cubic-bezier(.22,1,.36,1), transform .15s ease}
+header.stuck .bar{padding:.42rem 0}
+header.stuck .brand{font-size:1.12rem}
+header.stuck .brand img{width:30px; height:30px; border-radius:9px}
+header.stuck nav .btn{padding:.5rem 1.05rem; font-size:.9rem}
 .menu-toggle{display:none}
 
 /* ---------- hero ---------- */
@@ -158,7 +162,8 @@ nav .btn{padding:.68rem 1.25rem; font-size:.95rem}
 
 .gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:3rem}
 .gallery figure{margin:0}
-.gallery img{border-radius:22px; border:1px solid var(--line); background:var(--card)}
+.gallery .frame{display:block; overflow:hidden; border-radius:22px; border:1px solid var(--line); background:var(--card)}
+.gallery img{width:100%}
 .gallery figcaption{margin-top:.75rem; font-size:.9rem; color:var(--muted); text-align:center}
 
 /* ---------- pricing ---------- */
@@ -211,6 +216,21 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 .foot-col a:hover{color:#fff}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.12); margin-top:2.8rem; padding-top:1.4rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; font-size:.88rem; color:#8B9C88}
 
+/* ---------- hover ---------- */
+@media (hover:hover){
+  .step,.gallery figure,.feature,.pair article,.plan,.store{
+    transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, border-color .3s ease;
+  }
+  .step .shot img,.gallery .frame img{transition:transform .55s cubic-bezier(.22,1,.36,1)}
+  .step:hover,.gallery figure:hover{transform:translateY(-6px)}
+  .step:hover{box-shadow:0 24px 44px -28px rgba(28,58,42,.55)}
+  .gallery figure:hover .frame{box-shadow:0 22px 40px -26px rgba(28,58,42,.5)}
+  .step:hover .shot img,.gallery figure:hover .frame img{transform:scale(1.06)}
+  .feature:hover,.pair article:hover,.plan:hover{transform:translateY(-4px); border-color:#CFDAC7; box-shadow:0 18px 34px -28px rgba(28,58,42,.5)}
+  .store:hover{transform:translateY(-2px); border-color:#C7D1BB}
+  details:hover{border-color:#CFDAC7}
+}
+
 /* ---------- motion ---------- */
 .reveal{opacity:0; transform:translateY(14px)}
 .loaded .reveal{opacity:1; transform:none; transition:opacity .7s ease, transform .7s ease}
@@ -218,7 +238,9 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal,.loaded .reveal{opacity:1; transform:none; transition:none}
-  .btn:hover{transform:none}
+  .btn:hover,.step:hover,.gallery figure:hover,.feature:hover,.pair article:hover,.plan:hover,.store:hover{transform:none}
+  .step:hover .shot img,.gallery figure:hover .frame img{transform:none}
+  .bar,.brand,.brand img,nav .btn{transition:none}
 }
 :focus-visible{outline:3px solid var(--mint-b); outline-offset:3px; border-radius:6px}
 
@@ -404,7 +426,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
         <p>Set the rhythm a habit is meant to have and group habits the way you think about them.</p>
       </article>
       <article class="feature">
-        <div class="chip-row"><span class="chip">40+ icons</span></div>
+        <div class="chip-row"><span class="chip">2000+ icons</span></div>
         <h3>An icon for everything</h3>
         <p>Guitar, cold shower, coffee, laptop, dumbbell — pick the one that looks like your day.</p>
       </article>
@@ -421,10 +443,10 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
     </div>
 
     <div class="gallery">
-      <figure><img src="images/screens/forest.png" alt="Home screen" loading="lazy"><figcaption>Today, on one screen</figcaption></figure>
-      <figure><img src="images/screens/trees.png" alt="Trees screen" loading="lazy"><figcaption>Every tree you're growing</figcaption></figure>
-      <figure><img src="images/screens/growth-week.png" alt="Growth screen" loading="lazy"><figcaption>The week from above</figcaption></figure>
-      <figure><img src="images/screens/create-habit.png" alt="The Create a habit screen with tree species, icon picker and habit type" loading="lazy"><figcaption>Plant a new habit</figcaption></figure>
+      <figure><span class="frame"><img src="images/screens/forest.png" alt="Home screen" loading="lazy"></span><figcaption>Today, on one screen</figcaption></figure>
+      <figure><span class="frame"><img src="images/screens/trees.png" alt="Trees screen" loading="lazy"></span><figcaption>Every tree you're growing</figcaption></figure>
+      <figure><span class="frame"><img src="images/screens/growth-week.png" alt="Growth screen" loading="lazy"></span><figcaption>The week from above</figcaption></figure>
+      <figure><span class="frame"><img src="images/screens/create-habit.png" alt="The Create a habit screen with tree species, icon picker and habit type" loading="lazy"></span><figcaption>Plant a new habit</figcaption></figure>
     </div>
   </div>
 </section>
@@ -553,7 +575,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("loaded");
 
   const header = document.getElementById("site-header");
-  const onScroll = () => header.classList.toggle("stuck", window.scrollY > 8);
+  const onScroll = () => header.classList.toggle("stuck", window.scrollY > 24);
   onScroll();
   window.addEventListener("scroll", onScroll, {passive:true});
 
