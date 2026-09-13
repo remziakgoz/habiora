@@ -568,10 +568,10 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 
 <script>
 /* ============================================================
-   WAITLIST — paste your form endpoint between the quotes below.
-   Formspree:  https://formspree.io/f/xxxxxxxx
+   WAITLIST — Kit (form 9912991). Subscribers land in Kit and are
+   auto-confirmed; the launch broadcast goes out from there.
    ============================================================ */
-const WAITLIST_ENDPOINT = "";
+const WAITLIST_ENDPOINT = "https://app.kit.com/forms/9912991/subscriptions";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("loaded");
@@ -629,12 +629,17 @@ document.addEventListener("DOMContentLoaded", () => {
       button.textContent = "Saving…";
 
       try {
+        const payload = new FormData();
+        payload.append("email_address", email);
         const res = await fetch(WAITLIST_ENDPOINT, {
           method: "POST",
           headers: {"Accept": "application/json"},
-          body: new FormData(form)
+          body: payload
         });
-        if (!res.ok) throw new Error(res.status);
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || (data.status && data.status !== "success" && data.status !== "quarantined")) {
+          throw new Error(res.status);
+        }
         form.reset();
         msg.textContent = "You're on the list. Watch your inbox on launch day.";
         msg.classList.add("ok");
