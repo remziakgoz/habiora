@@ -45,7 +45,8 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 h1,h2,h3,.display{font-family:"Fredoka",system-ui,sans-serif; font-weight:600; line-height:1.12; letter-spacing:-.01em; margin:0}
-h1{font-size:clamp(2.4rem,5vw,3.8rem); text-wrap:balance; max-width:16ch}
+h1{font-size:clamp(2.4rem,5vw,3.8rem); text-wrap:balance; max-width:18ch}
+.accent{color:#C9891F}
 h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
 h3{font-size:1.22rem}
 p{margin:0}
@@ -78,8 +79,9 @@ nav .btn{padding:.68rem 1.25rem; font-size:.95rem}
 .menu-toggle{display:none}
 
 /* ---------- hero ---------- */
-.hero{padding-top:clamp(3rem,6vw,5rem); overflow:hidden}
-.hero-grid{display:grid; grid-template-columns:1fr 1.08fr; gap:clamp(2rem,5vw,4.5rem); align-items:center}
+.hero{padding-top:clamp(2.5rem,5vw,4rem); padding-bottom:clamp(3rem,6vw,5rem)}
+.hero .wrap{width:min(1280px,100% - 2.5rem)}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:clamp(1.5rem,3vw,3rem); align-items:center}
 .tagline{display:inline-flex; align-items:center; gap:.55rem; background:#E8EFE5; color:#40634A; border-radius:999px; padding:.42rem .95rem; font-weight:700; font-size:.9rem}
 .tagline .dot{width:8px;height:8px;border-radius:50%;background:var(--mint-b)}
 .hero h1{margin:1.4rem 0 1.1rem}
@@ -109,10 +111,10 @@ nav .btn{padding:.68rem 1.25rem; font-size:.95rem}
 /* phone */
 .phone-stage{position:relative; display:flex; justify-content:center; align-items:center}
 .phone-stage::before{
-  content:""; position:absolute; inset:2% -4%; border-radius:50%;
-  background:radial-gradient(circle at 50% 50%, rgba(110,231,183,.34), rgba(243,238,229,0) 66%);
+  content:""; position:absolute; inset:-8% -2%; border-radius:50%;
+  background:radial-gradient(ellipse at 50% 52%, rgba(110,231,183,.42), rgba(243,238,229,0) 68%);
 }
-.hero-shot{position:relative; width:min(620px,104%); max-width:none; filter:drop-shadow(0 30px 45px rgba(28,58,42,.16))}
+.hero-shot{position:relative; width:100%; max-width:780px}
 
 /* ---------- contrast pair ---------- */
 .pair{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:3rem}
@@ -224,7 +226,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 @media (max-width:960px){
   .hero-grid,.band-grid{grid-template-columns:1fr}
   .phone-stage{order:-1}
-  .hero-shot{width:min(560px,100%)}
+  .hero-shot{width:100%; max-width:620px; margin-inline:auto}
   .steps,.features,.plans{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
   nav a:not(.btn){display:none}
@@ -261,7 +263,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
   <div class="wrap hero-grid">
     <div>
       <span class="tagline reveal"><span class="dot"></span> Coming soon to iPhone and Android</span>
-      <h1 class="reveal">Every habit you keep becomes a tree.</h1>
+      <h1 class="reveal">Every habit you keep <span class="accent">becomes a tree.</span></h1>
       <p class="lede reveal">Habiora is a habit tracker you can actually see. Mark a habit today and its tree grows a little. Keep going and a bare patch of soil turns into your own forest.</p>
 
       <div class="waitlist reveal" id="waitlist">
@@ -288,7 +290,10 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
     </div>
 
     <div class="phone-stage reveal">
-      <img class="hero-shot" src="images/hero-phones.png" alt="Three Habiora screens: the Growth island for September, the My Forest home screen, and the Trees list" width="1000" height="741" fetchpriority="high">
+      <picture>
+        <source srcset="images/hero-phones.webp" type="image/webp">
+        <img class="hero-shot" src="images/hero-phones.png" alt="Three Habiora screens: the Growth island for September, the My Forest home screen, and the Trees list" width="1560" height="1158" fetchpriority="high">
+      </picture>
     </div>
   </div>
 </section>
