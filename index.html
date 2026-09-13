@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Habiora — Grow your habits into a forest</title>
+<meta name="description" content="Habiora turns every habit into a tree. Keep it up and your forest fills in. Coming soon to iPhone and Android — join the waitlist.">
+<link rel="icon" href="images/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta property="og:title" content="Habiora — Grow your habits into a forest">
+<meta property="og:description" content="Every habit is a tree. Keep it up and your forest fills in. Coming soon — join the waitlist.">
+<meta property="og:image" content="images/illustration.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#F3EEE5;
+  --card:#FDFBF6;
+  --ink:#1C3A2A;
+  --forest:#24412F;
+  --forest-deep:#1B3324;
+  --muted:#6E7A6F;
+  --muted-light:#A9B4A6;
+  --line:#E4DCCD;
+  --mint-a:#6EE7B7;
+  --mint-b:#3FD6AE;
+  --gold:#DFA330;
+  --t-green:#2E7D4F; --t-purple:#9B7BD4; --t-orange:#E8A33D;
+  --t-pink:#E4849A; --t-blue:#7FA8DC; --t-teal:#4BB7AE; --t-yellow:#E7CF52;
+  --r-lg:28px; --r-md:20px; --r-sm:14px;
+  --shadow:0 18px 40px -24px rgba(28,58,42,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Quicksand",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px; line-height:1.6; font-weight:500;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:"Fredoka",system-ui,sans-serif; font-weight:600; line-height:1.12; letter-spacing:-.01em; margin:0}
+h1{font-size:clamp(2.5rem,5.6vw,4.1rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+h3{font-size:1.22rem}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%; display:block}
+.wrap{width:min(1120px,100% - 2.5rem); margin-inline:auto}
+.lede{color:var(--muted); font-size:clamp(1.02rem,1.5vw,1.18rem); max-width:56ch}
+section{padding:clamp(4.5rem,9vw,7.5rem) 0}
+
+/* ---------- header ---------- */
+header{position:sticky; top:0; z-index:50; backdrop-filter:blur(12px); background:rgba(243,238,229,.82); border-bottom:1px solid transparent; transition:border-color .25s}
+header.stuck{border-bottom-color:var(--line)}
+.bar{display:flex; align-items:center; gap:2rem; padding:.85rem 0}
+.brand{display:flex; align-items:center; gap:.6rem; font-family:"Fredoka"; font-weight:600; font-size:1.3rem; text-decoration:none}
+.brand img{width:38px; height:38px; border-radius:11px}
+nav{margin-left:auto; display:flex; align-items:center; gap:1.9rem}
+nav a{text-decoration:none; color:var(--muted); font-weight:600; font-size:.98rem}
+nav a:hover{color:var(--ink)}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  font-family:"Fredoka"; font-weight:600; font-size:1rem; border:0; cursor:pointer;
+  padding:.85rem 1.5rem; border-radius:999px; text-decoration:none; white-space:nowrap;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn-mint{background:linear-gradient(135deg,var(--mint-a),var(--mint-b)); color:#12362A; box-shadow:0 10px 22px -12px rgba(63,214,174,.9)}
+.btn-ink{background:var(--ink); color:#F6F3EC}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+nav .btn{padding:.68rem 1.25rem; font-size:.95rem}
+.menu-toggle{display:none}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(3rem,6vw,5rem); overflow:hidden}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,5vw,4.5rem); align-items:center}
+.tagline{display:inline-flex; align-items:center; gap:.55rem; background:#E8EFE5; color:#40634A; border-radius:999px; padding:.42rem .95rem; font-weight:700; font-size:.9rem}
+.tagline .dot{width:8px;height:8px;border-radius:50%;background:var(--mint-b)}
+.hero h1{margin:1.4rem 0 1.1rem}
+.hero .lede{font-size:clamp(1.05rem,1.6vw,1.22rem)}
+
+.waitlist{margin-top:2.2rem; max-width:470px}
+.waitlist form{display:flex; gap:.6rem; background:var(--card); padding:.5rem; border-radius:999px; border:1px solid var(--line); box-shadow:var(--shadow)}
+.waitlist input[type=email]{
+  flex:1; min-width:0; border:0; background:transparent; padding:.55rem 1rem;
+  font:inherit; font-weight:600; color:var(--ink);
+}
+.waitlist input::placeholder{color:var(--muted-light); font-weight:500}
+.waitlist input:focus{outline:none}
+.waitlist form:focus-within{border-color:var(--mint-b); box-shadow:0 0 0 4px rgba(110,231,183,.25)}
+.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+.form-note{margin-top:.85rem; font-size:.9rem; color:var(--muted); padding-left:.4rem}
+.form-msg{margin-top:.85rem; font-size:.95rem; font-weight:600; padding-left:.4rem; min-height:1.2em}
+.form-msg.ok{color:#2E7D4F}
+.form-msg.err{color:#C0603F}
+
+.stores{display:flex; flex-wrap:wrap; gap:.7rem; margin-top:2.2rem}
+.store{display:flex; align-items:center; gap:.65rem; border:1px dashed var(--line); background:rgba(253,251,246,.6); border-radius:16px; padding:.65rem 1.05rem; color:var(--muted)}
+.store svg{width:22px; height:22px; fill:currentColor; flex:none}
+.store span{display:block; font-size:.72rem; line-height:1.25; letter-spacing:.02em}
+.store strong{display:block; font-family:"Fredoka"; font-weight:600; font-size:1rem; color:var(--ink); line-height:1.2}
+
+/* phone */
+.phone-stage{position:relative; display:flex; justify-content:center}
+.phone-stage::before{
+  content:""; position:absolute; inset:-12% -6% 8%; border-radius:50%;
+  background:radial-gradient(circle at 50% 45%, rgba(110,231,183,.38), rgba(243,238,229,0) 62%);
+}
+.phone{
+  position:relative; width:min(310px,78vw); border-radius:44px; padding:10px;
+  background:linear-gradient(160deg,#2F4A38,#1B3324);
+  box-shadow:0 40px 70px -34px rgba(24,52,36,.65);
+}
+.phone img{border-radius:35px}
+.bubble{
+  position:absolute; width:54px; height:54px; border-radius:50%; background:#fff;
+  display:grid; place-items:center; box-shadow:0 12px 24px -14px rgba(28,58,42,.6);
+}
+.bubble svg{width:26px; height:26px; stroke-width:1.9; fill:none; stroke-linecap:round; stroke-linejoin:round}
+.b1{top:8%; left:-4%; color:var(--t-orange)}
+.b2{top:34%; right:-6%; color:var(--t-purple)}
+.b3{bottom:16%; left:-7%; color:var(--t-green)}
+
+/* ---------- contrast pair ---------- */
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:3rem}
+.pair article{background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); padding:2.1rem}
+.pair article.good{background:linear-gradient(170deg,#EAF4EC,#F7FBF4); border-color:#D6E6D4}
+.pair h3{margin-bottom:.6rem}
+.pair p{color:var(--muted)}
+.pair .mark{font-family:"Fredoka"; font-size:.85rem; font-weight:600; color:var(--muted); margin-bottom:1rem}
+
+/* ---------- steps ---------- */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:3.2rem; counter-reset:step}
+.step{background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; display:flex; flex-direction:column}
+.step .shot{background:#EFEAE0; padding:1.6rem 1.6rem 0; display:flex; justify-content:center}
+.step .shot img{border-radius:18px 18px 0 0; box-shadow:0 -6px 30px -18px rgba(28,58,42,.6); max-height:290px; object-fit:cover; object-position:top}
+.step .body{padding:1.5rem 1.6rem 1.8rem}
+.step h3{display:flex; align-items:baseline; gap:.6rem; margin-bottom:.45rem}
+.step h3::before{counter-increment:step; content:counter(step); font-size:.92rem; color:var(--gold); font-weight:700}
+.step p{color:var(--muted); font-size:.97rem}
+
+/* ---------- dark band ---------- */
+.band{background:var(--forest); color:#EFF3EC; border-radius:clamp(28px,4vw,48px); margin-block:0; padding:clamp(3rem,6vw,5rem) clamp(1.6rem,4vw,4rem)}
+.band h2{color:#F4F8F1}
+.band .lede{color:#B6C7B4}
+.band-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:center}
+.band-phone{width:min(290px,70vw); border-radius:40px; padding:9px; background:#12241A; box-shadow:0 40px 60px -30px rgba(0,0,0,.7); margin-inline:auto}
+.band-phone img{border-radius:32px}
+.stat-list{list-style:none; padding:0; margin:2rem 0 0; display:grid; gap:1.1rem}
+.stat-list li{display:flex; gap:.85rem; align-items:flex-start; color:#CBD9C7}
+.stat-list b{color:#F4F8F1; font-family:"Fredoka"; font-weight:600; display:block; font-size:1.05rem}
+.leaf{flex:none; width:22px; height:22px; margin-top:.2rem; color:var(--mint-a)}
+
+/* ---------- features ---------- */
+.features{display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:3rem}
+.feature{background:var(--card); border:1px solid var(--line); border-radius:var(--r-md); padding:1.7rem}
+.feature h3{font-size:1.08rem; margin-bottom:.4rem}
+.feature p{color:var(--muted); font-size:.96rem}
+.trees{display:flex; gap:.35rem; margin-bottom:1.1rem}
+.trees i{width:15px; height:15px; border-radius:50% 50% 45% 45%; display:block}
+.chip-row{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.1rem}
+.chip{font-size:.78rem; font-weight:700; padding:.25rem .65rem; border-radius:999px; background:#EDE7DA; color:#5D6B5E}
+
+.gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:3rem}
+.gallery figure{margin:0}
+.gallery img{border-radius:22px; border:1px solid var(--line); background:var(--card)}
+.gallery figcaption{margin-top:.75rem; font-size:.9rem; color:var(--muted); text-align:center}
+
+/* ---------- pricing ---------- */
+.price-head{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1.5rem}
+.table{margin-top:2.6rem; background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden}
+.table table{width:100%; border-collapse:collapse; font-size:1rem}
+.table th,.table td{padding:1rem 1.3rem; text-align:left; border-bottom:1px solid var(--line)}
+.table thead th{font-family:"Fredoka"; font-weight:600; color:var(--muted); font-size:.95rem}
+.table td:not(:first-child),.table th:not(:first-child){text-align:center; width:22%}
+.table tbody tr:last-child td{border-bottom:0}
+.col-pro{background:#EDF6EF}
+.pro-badge{display:inline-block; background:linear-gradient(135deg,#3FD6AE,#2BB0E0); color:#fff; font-family:"Fredoka"; font-weight:600; padding:.2rem .7rem; border-radius:8px; font-size:.9rem}
+.yes{color:#2E7D4F; font-weight:700}
+.no{color:var(--muted-light)}
+.plans{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:1.6rem}
+.plan{background:var(--card); border:1px solid var(--line); border-radius:var(--r-md); padding:1.4rem 1.5rem}
+.plan.best{border-color:var(--ink); border-width:2px}
+.plan .name{font-family:"Fredoka"; font-weight:600; font-size:1.1rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap}
+.plan .price{font-family:"Fredoka"; font-weight:600; font-size:1.75rem; margin-top:.5rem}
+.plan .sub{color:var(--muted); font-size:.92rem}
+.tag{font-size:.72rem; font-weight:700; padding:.2rem .55rem; border-radius:999px}
+.tag.free{background:#C9F6E2; color:#155E45}
+.tag.save{background:#F3DDA9; color:#7A5512}
+.fineprint{margin-top:1.3rem; color:var(--muted); font-size:.9rem}
+
+/* ---------- faq ---------- */
+.faq{max-width:800px; margin:3rem auto 0}
+details{background:var(--card); border:1px solid var(--line); border-radius:var(--r-md); padding:1.1rem 1.4rem; margin-bottom:.8rem}
+details[open]{border-color:#CFD9C9}
+summary{font-family:"Fredoka"; font-weight:600; font-size:1.06rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-size:1.4rem; color:var(--muted); line-height:1; transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted); margin-top:.8rem; font-size:.99rem}
+
+/* ---------- final cta ---------- */
+.final{text-align:center}
+.final .lede{margin:1.1rem auto 0; text-align:center}
+.final .waitlist{margin:2.4rem auto 0}
+.final .form-note,.final .form-msg{text-align:center; padding:0}
+
+/* ---------- footer ---------- */
+footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; margin-top:clamp(4rem,8vw,7rem)}
+.foot-grid{display:flex; flex-wrap:wrap; gap:2.5rem; justify-content:space-between}
+.foot-brand{max-width:300px}
+.foot-brand .brand{color:#F2F7EF}
+.foot-brand p{margin-top:.9rem; font-size:.95rem; color:#9FB29C}
+.foot-col h4{font-family:"Fredoka"; font-weight:600; color:#8FBF9E; font-size:.95rem; margin:0 0 .9rem}
+.foot-col a{display:block; text-decoration:none; margin-bottom:.5rem; font-size:.96rem}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12); margin-top:2.8rem; padding-top:1.4rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; font-size:.88rem; color:#8B9C88}
+
+/* ---------- motion ---------- */
+.reveal{opacity:0; transform:translateY(14px)}
+.loaded .reveal{opacity:1; transform:none; transition:opacity .7s ease, transform .7s ease}
+.loaded .reveal:nth-child(2){transition-delay:.08s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal,.loaded .reveal{opacity:1; transform:none; transition:none}
+  .btn:hover{transform:none}
+}
+:focus-visible{outline:3px solid var(--mint-b); outline-offset:3px; border-radius:6px}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .hero-grid,.band-grid{grid-template-columns:1fr}
+  .phone-stage{order:-1}
+  .steps,.features,.plans{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  nav a:not(.btn){display:none}
+  .pair{grid-template-columns:1fr}
+  .step .shot img{max-height:250px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .waitlist form{flex-direction:column; border-radius:24px; padding:.75rem}
+  .waitlist input[type=email]{text-align:center; padding:.7rem}
+  .waitlist .btn{width:100%}
+  .table th,.table td{padding:.8rem .7rem; font-size:.92rem}
+}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="images/icon.png" alt=""> Habiora</a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist" class="btn btn-ink">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tagline reveal"><span class="dot"></span> Coming soon to iPhone and Android</span>
+      <h1 class="reveal">Every habit you keep<br>becomes a tree.</h1>
+      <p class="lede reveal">Habiora is a habit tracker you can actually see. Mark a habit today and its tree grows a little. Keep going and a bare patch of soil turns into your own forest.</p>
+
+      <div class="waitlist reveal" id="waitlist">
+        <form class="wl-form" novalidate>
+          <label class="hp" for="company-hero">Leave this empty</label>
+          <input class="hp" type="text" id="company-hero" name="_gotcha" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+          <button class="btn btn-mint" type="submit">Save my spot</button>
+        </form>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-note">One email when Habiora is out. Nothing else, ever.</p>
+      </div>
+
+      <div class="stores reveal">
+        <div class="store">
+          <svg viewBox="0 0 24 24"><path d="M16.4 12.8c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.1-.8-2.1-3.6zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+          <div><span>Coming soon to</span><strong>App Store</strong></div>
+        </div>
+        <div class="store">
+          <svg viewBox="0 0 24 24"><path d="M4.2 2.6c-.3.3-.5.8-.5 1.4v16c0 .6.2 1.1.5 1.4l.1.1 9-9v-.2l-9-8.7zM16.6 9.1l-3-2.9-8.7 8.4v.1l8.7 8.4 3-3c.9-.5 1.5-.9 1.5-.9 1.1-.6 1.1-1.6 0-2.2l-1.5-.9zM4.5 21.9l8.7-8.4 2.4 2.4-9.4 5.4c-.6.4-1.2.4-1.7.6zM4.5 2.1c.5.2 1.1.2 1.7.6l9.4 5.4-2.4 2.4-8.7-8.4z"/></svg>
+          <div><span>Coming soon to</span><strong>Google Play</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-stage reveal">
+      <div class="phone">
+        <img src="images/screens/forest.png" alt="The Habiora home screen showing a forest of eight coloured trees and today's habits" width="620" height="1347" fetchpriority="high">
+      </div>
+      <div class="bubble b1"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M4 14l4-1 8-8 3 3-8 8-1 4z"/><path d="M3 20h18"/></svg></div>
+      <div class="bubble b2"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M6 8v8M18 8v8M4 10v4M20 10v4M6 12h12"/></svg></div>
+      <div class="bubble b3"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M19 5c0 7-5 12-12 12-2 0-3-1-3-1s4-1 6-4c-3 0-5-2-5-2s8 0 14-5z"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTRAST -->
+<section>
+  <div class="wrap">
+    <h2>A list of checkboxes is easy to abandon.</h2>
+    <p class="lede" style="margin-top:1rem">Most trackers ask you to tick a box and give you a number back. Habiora gives you something that visibly changes shape, and that you'd rather not let wither.</p>
+    <div class="pair">
+      <article>
+        <p class="mark">The usual tracker</p>
+        <h3>Rows, streaks, guilt</h3>
+        <p>You open it, tick four boxes, close it. Break a streak and the app resets you to zero, so the honest move starts to feel like skipping the app instead.</p>
+      </article>
+      <article class="good">
+        <p class="mark">Habiora</p>
+        <h3>A forest that remembers</h3>
+        <p>Every day you keep goes into the tree, not a counter. A rough week slows its growth, it doesn't erase the year behind it — and you can rest a tree and bring it back when you're ready.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <h2>From a seed to a full canopy.</h2>
+    <p class="lede" style="margin-top:1rem">Three things to do, and only one of them is daily.</p>
+    <div class="steps">
+      <article class="step">
+        <div class="shot"><img src="images/screens/edit-habit.png" alt="Creating a habit called Running with an orange tree species" loading="lazy"></div>
+        <div class="body">
+          <h3>Plant a habit</h3>
+          <p>Name it, say what it looks like on a good day — “3 km before work” — and pick the tree species and icon it grows as.</p>
+        </div>
+      </article>
+      <article class="step">
+        <div class="shot"><img src="images/screens/trees.png" alt="The Trees screen listing habits with their growth progress" loading="lazy"></div>
+        <div class="body">
+          <h3>Mark the days you do it</h3>
+          <p>One tap on the home screen. Building something or quitting something both count — Habiora tracks either direction.</p>
+        </div>
+      </article>
+      <article class="step">
+        <div class="shot"><img src="images/screens/growth-week.png" alt="The Growth screen showing a week of progress on an isometric island" loading="lazy"></div>
+        <div class="body">
+          <h3>Watch the forest fill in</h3>
+          <p>Seedling, sapling, mature tree, flourishing. Your island gets denser and more colourful the longer you stay with it.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DARK BAND -->
+<section>
+  <div class="wrap">
+    <div class="band">
+      <div class="band-grid">
+        <div>
+          <h2>Your month, in one picture.</h2>
+          <p class="lede" style="margin-top:1rem">Growth shows the same forest from above — week, month or year — so you can see where the good stretches were without reading a single number.</p>
+          <ul class="stat-list">
+            <li>
+              <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 5c0 7-5 12-12 12-2 0-3-1-3-1s4-1 6-4c-3 0-5-2-5-2s8 0 14-5z"/></svg>
+              <div><b>Week, month and year</b>Step back through any period and compare it with the one before.</div>
+            </li>
+            <li>
+              <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 5c0 7-5 12-12 12-2 0-3-1-3-1s4-1 6-4c-3 0-5-2-5-2s8 0 14-5z"/></svg>
+              <div><b>Growth distribution</b>A daily bar chart of how much of your forest you tended each day.</div>
+            </li>
+            <li>
+              <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 5c0 7-5 12-12 12-2 0-3-1-3-1s4-1 6-4c-3 0-5-2-5-2s8 0 14-5z"/></svg>
+              <div><b>Leaves for the days you show up</b>Earned as you go, spent on the forest.</div>
+            </li>
+          </ul>
+        </div>
+        <div class="band-phone">
+          <img src="images/screens/growth-month.png" alt="The Growth screen for September with an isometric island of eight trees" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <h2>Small things that make it yours.</h2>
+    <div class="features">
+      <article class="feature">
+        <div class="trees">
+          <i style="background:var(--t-green)"></i><i style="background:var(--t-purple)"></i><i style="background:var(--t-orange)"></i>
+          <i style="background:var(--t-pink)"></i><i style="background:var(--t-blue)"></i><i style="background:var(--t-teal)"></i><i style="background:var(--t-yellow)"></i>
+        </div>
+        <h3>Nine tree species</h3>
+        <p>Reading is pink, running is orange, meditation is deep green. You'll recognise your forest at a glance.</p>
+      </article>
+      <article class="feature">
+        <div class="chip-row"><span class="chip">Build a habit</span><span class="chip">Quit a habit</span></div>
+        <h3>Both directions</h3>
+        <p>Mark the days you did it, or the days you didn't slip. Either way a tree grows.</p>
+      </article>
+      <article class="feature">
+        <div class="chip-row"><span class="chip">Daily</span><span class="chip">Weekly</span><span class="chip">Category</span></div>
+        <h3>Streak goals and categories</h3>
+        <p>Set the rhythm a habit is meant to have and group habits the way you think about them.</p>
+      </article>
+      <article class="feature">
+        <div class="chip-row"><span class="chip">40+ icons</span></div>
+        <h3>An icon for everything</h3>
+        <p>Guitar, cold shower, coffee, laptop, dumbbell — pick the one that looks like your day.</p>
+      </article>
+      <article class="feature">
+        <div class="chip-row"><span class="chip">Pause</span><span class="chip">Resume</span></div>
+        <h3>Rest a tree</h3>
+        <p>Travelling or ill? Put a habit to rest and bring it back later with its history intact.</p>
+      </article>
+      <article class="feature">
+        <div class="chip-row"><span class="chip">Seedling</span><span class="chip">Mature</span><span class="chip">Flourishing</span></div>
+        <h3>Milestones worth reaching</h3>
+        <p>Each stage takes longer than the last, which is exactly how habits work.</p>
+      </article>
+    </div>
+
+    <div class="gallery">
+      <figure><img src="images/screens/forest.png" alt="Home screen" loading="lazy"><figcaption>Today, on one screen</figcaption></figure>
+      <figure><img src="images/screens/trees.png" alt="Trees screen" loading="lazy"><figcaption>Every tree you're growing</figcaption></figure>
+      <figure><img src="images/screens/growth-week.png" alt="Growth screen" loading="lazy"><figcaption>The week from above</figcaption></figure>
+      <figure><img src="images/screens/edit-habit-icons.png" alt="Icon picker" loading="lazy"><figcaption>Species, icons, goals</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="price-head">
+      <div>
+        <h2>Free for three trees.</h2>
+        <p class="lede" style="margin-top:1rem">Most people start with one or two habits, and that's free forever. Pro is for when your forest outgrows the plot — monthly, yearly or a single payment, whichever suits you.</p>
+      </div>
+    </div>
+
+    <div class="table">
+      <table>
+        <thead>
+          <tr><th>&nbsp;</th><th>Free</th><th class="col-pro"><span class="pro-badge">PRO</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Trees growing at once</td><td>3</td><td class="col-pro"><b>Any</b></td></tr>
+          <tr><td>Streaks, milestones and charts</td><td class="yes">✓</td><td class="col-pro yes">✓</td></tr>
+          <tr><td>Every species, icon and category</td><td class="yes">✓</td><td class="col-pro yes">✓</td></tr>
+          <tr><td>Rest a tree and bring it back</td><td class="yes">✓</td><td class="col-pro yes">✓</td></tr>
+          <tr><td>Keeps the app growing</td><td class="no">—</td><td class="col-pro yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="plans">
+      <article class="plan">
+        <p class="name">Monthly</p>
+        <p class="sub">A subscription you can cancel whenever you like.</p>
+      </article>
+      <article class="plan best">
+        <p class="name">Yearly <span class="tag free">Free trial</span></p>
+        <p class="sub">Try Pro first, then the cheapest way to keep it.</p>
+      </article>
+      <article class="plan">
+        <p class="name">Lifetime</p>
+        <p class="sub">One payment, nothing renews.</p>
+      </article>
+    </div>
+    <p class="fineprint">Prices are set at launch and shown in your own currency on the App Store and Google Play.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <h2 style="text-align:center">Questions before you sign up</h2>
+    <div class="faq">
+      <details open>
+        <summary>When is Habiora out?</summary>
+        <p>It's in the last stretch of development now. Everyone on the waitlist hears the moment it's on the App Store, and gets the Android date as soon as it's set.</p>
+      </details>
+      <details>
+        <summary>Which platforms will it support?</summary>
+        <p>iPhone first, Android shortly after. One waitlist covers both — tell us which you're on when you get the email.</p>
+      </details>
+      <details>
+        <summary>What happens if I miss a day?</summary>
+        <p>Nothing gets deleted. The tree simply doesn't grow that day, and the days behind it stay exactly where they were. If you need a longer break, rest the tree and pick it up later.</p>
+      </details>
+      <details>
+        <summary>Can I track a habit I'm trying to quit?</summary>
+        <p>Yes. Set the habit type to “Quit a habit” and you mark the days you stayed clear of it instead.</p>
+      </details>
+      <details>
+        <summary>Do I have to pay?</summary>
+        <p>No. Three trees, every species, every chart and every milestone are free. Pro removes the limit on how many habits can grow at once and pays for the app's development.</p>
+      </details>
+      <details>
+        <summary>What do you do with my email?</summary>
+        <p>It's used for the launch note and nothing else. No newsletter, no sharing it with anyone, and one click to unsubscribe.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Plant the first one.</h2>
+    <p class="lede">Join the waitlist and you'll be growing your forest the day Habiora lands.</p>
+    <div class="waitlist">
+      <form class="wl-form" novalidate>
+        <label class="hp" for="company-final">Leave this empty</label>
+        <input class="hp" type="text" id="company-final" name="_gotcha" tabindex="-1" autocomplete="off">
+        <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+        <button class="btn btn-mint" type="submit">Save my spot</button>
+      </form>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+      <p class="form-note">One email when Habiora is out. Nothing else, ever.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" style="text-decoration:none"><img src="images/icon.png" alt=""> Habiora</a>
+        <p>A habit tracker that grows a forest instead of a streak counter.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:habiora@proton.me">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Habiora. All rights reserved.</span>
+      <span>Grow something you can see.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   WAITLIST — paste your form endpoint between the quotes below.
+   Formspree:  https://formspree.io/f/xxxxxxxx
+   ============================================================ */
+const WAITLIST_ENDPOINT = "";
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+
+  const header = document.getElementById("site-header");
+  const onScroll = () => header.classList.toggle("stuck", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  document.querySelectorAll(".wl-form").forEach(form => {
+    const msg = form.parentElement.querySelector(".form-msg");
+    const input = form.querySelector("input[type=email]");
+    const button = form.querySelector("button");
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const email = input.value.trim();
+      msg.className = "form-msg";
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.textContent = "That address doesn't look right — check it and try again.";
+        msg.classList.add("err");
+        input.focus();
+        return;
+      }
+      if (form.querySelector("input[name=_gotcha]").value) return;
+
+      if (!WAITLIST_ENDPOINT) {
+        msg.textContent = "The waitlist isn't connected yet. Email habiora@proton.me and we'll add you by hand.";
+        msg.classList.add("err");
+        return;
+      }
+
+      button.disabled = true;
+      const original = button.textContent;
+      button.textContent = "Saving…";
+
+      try {
+        const res = await fetch(WAITLIST_ENDPOINT, {
+          method: "POST",
+          headers: {"Accept": "application/json"},
+          body: new FormData(form)
+        });
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        msg.textContent = "You're on the list. Watch your inbox on launch day.";
+        msg.classList.add("ok");
+      } catch (err) {
+        msg.textContent = "That didn't go through. Try again, or email habiora@proton.me.";
+        msg.classList.add("err");
+      } finally {
+        button.disabled = false;
+        button.textContent = original;
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
