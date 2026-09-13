@@ -138,8 +138,8 @@ nav .btn{padding:.68rem 1.25rem; font-size:.95rem}
 /* ---------- steps ---------- */
 .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; margin-top:3.2rem; counter-reset:step}
 .step{background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; display:flex; flex-direction:column}
-.step .shot{background:#EFEAE0; padding:1.6rem 1.6rem 0; display:flex; justify-content:center}
-.step .shot img{border-radius:18px 18px 0 0; box-shadow:0 -6px 30px -18px rgba(28,58,42,.6); max-height:290px; object-fit:cover; object-position:top}
+.step .shot{display:block; border-bottom:1px solid var(--line); background:#EFEAE0}
+.step .shot img{width:100%; aspect-ratio:1/1; object-fit:cover}
 .step .body{padding:1.5rem 1.6rem 1.8rem}
 .step h3{display:flex; align-items:baseline; gap:.6rem; margin-bottom:.45rem}
 .step h3::before{counter-increment:step; content:counter(step); font-size:.92rem; color:var(--gold); font-weight:700}
@@ -241,7 +241,6 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
   .gallery{grid-template-columns:repeat(2,1fr)}
   nav a:not(.btn){display:none}
   .pair{grid-template-columns:1fr}
-  .step .shot img{max-height:250px}
 }
 @media (max-width:560px){
   body{font-size:16px}
@@ -338,21 +337,21 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
     <p class="lede" style="margin-top:1rem">Three things to do, and only one of them is daily.</p>
     <div class="steps">
       <article class="step">
-        <div class="shot"><img src="images/screens/edit-habit.png" alt="Creating a habit called Running with an orange tree species" loading="lazy"></div>
+        <div class="shot"><img src="images/steps/plant.png" alt="Naming a habit Running and giving it an orange tree" width="560" height="560" loading="lazy"></div>
         <div class="body">
           <h3>Plant a habit</h3>
           <p>Name it, say what it looks like on a good day — “3 km before work” — and pick the tree species and icon it grows as.</p>
         </div>
       </article>
       <article class="step">
-        <div class="shot"><img src="images/screens/trees.png" alt="The Trees screen listing habits with their growth progress" loading="lazy"></div>
+        <div class="shot"><img src="images/steps/mark.png" alt="Today's habits waiting to be ticked off" width="560" height="560" loading="lazy"></div>
         <div class="body">
           <h3>Mark the days you do it</h3>
-          <p>One tap on the home screen. Building something or quitting something both count — Habiora tracks either direction.</p>
+          <p>Today's habits sit on the home screen. One tap each, and building something or quitting something both count.</p>
         </div>
       </article>
       <article class="step">
-        <div class="shot"><img src="images/screens/growth-week.png" alt="The Growth screen showing a week of progress on an isometric island" loading="lazy"></div>
+        <div class="shot"><img src="images/steps/grow.png" alt="An island of eight coloured trees seen from above" width="560" height="560" loading="lazy"></div>
         <div class="body">
           <h3>Watch the forest fill in</h3>
           <p>Seedling, sapling, mature tree, flourishing. Your island gets denser and more colourful the longer you stay with it.</p>
