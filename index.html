@@ -606,6 +606,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* Arriving from another page (404, privacy, terms) with #waitlist in the
+     URL: the browser does a raw jump that parks the form at the top of the
+     viewport and pushes the headline off screen. Centre it instead, matching
+     what an in-page click does. Runs again on load because the hero image and
+     webfonts change the page height after DOMContentLoaded. */
+  if (location.hash === "#waitlist") {
+    const target = document.getElementById("waitlist");
+    const settle = () => {
+      target.scrollIntoView({behavior: "auto", block: "center"});
+      if (window.matchMedia("(hover:hover)").matches) {
+        const input = target.querySelector("input[type=email]");
+        if (input) input.focus({preventScroll: true});
+      }
+    };
+    settle();
+    window.addEventListener("load", settle, {once: true});
+  }
+
   document.querySelectorAll(".wl-form").forEach(form => {
     const msg = form.parentElement.querySelector(".form-msg");
     const input = form.querySelector("input[type=email]");
