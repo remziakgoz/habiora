@@ -607,21 +607,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* Arriving from another page (404, privacy, terms) with #waitlist in the
-     URL: the browser does a raw jump that parks the form at the top of the
-     viewport and pushes the headline off screen. Centre it instead, matching
-     what an in-page click does. Runs again on load because the hero image and
-     webfonts change the page height after DOMContentLoaded. */
+     URL: the browser parks the form at the top of the viewport and pushes the
+     headline off screen, and it re-applies that jump once the page has fully
+     loaded. So drop the fragment from the URL first — with nothing to target,
+     the browser stops interfering — then place the form in the middle of the
+     viewport ourselves. Repeated after load and after the webfonts swap in,
+     because both change the page height. */
   if (location.hash === "#waitlist") {
     const target = document.getElementById("waitlist");
+    const root = document.documentElement;
+    history.replaceState(null, "", location.pathname + location.search);
+
     const settle = () => {
-      target.scrollIntoView({behavior: "auto", block: "center"});
-      if (window.matchMedia("(hover:hover)").matches) {
-        const input = target.querySelector("input[type=email]");
-        if (input) input.focus({preventScroll: true});
-      }
+      const prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      const box = target.getBoundingClientRect();
+      const y = window.scrollY + box.top - (window.innerHeight - box.height) / 2;
+      window.scrollTo(0, Math.max(0, y));
+      root.style.scrollBehavior = prev;
     };
+
     settle();
-    window.addEventListener("load", settle, {once: true});
+    window.addEventListener("load", () => requestAnimationFrame(settle), {once: true});
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => requestAnimationFrame(() => {
+        settle();
+        if (window.matchMedia("(hover:hover)").matches) {
+          const input = target.querySelector("input[type=email]");
+          if (input) input.focus({preventScroll: true});
+        }
+      }));
+    }
   }
 
   document.querySelectorAll(".wl-form").forEach(form => {
