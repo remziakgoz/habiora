@@ -7,16 +7,17 @@
     <priority>1.0</priority>
   </url>
 
-  <!--
-    Add these two once the pages are live. Listing a URL that returns 404
-    makes Search Console report the sitemap as having errors.
-
   <url>
     <loc>https://habiora.co/privacy-policy.html</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!--
+    Uncomment once terms.html is live. Listing a URL that returns 404
+    makes Search Console report the sitemap as having errors.
+
   <url>
     <loc>https://habiora.co/terms.html</loc>
     <lastmod>2026-09-13</lastmod>
