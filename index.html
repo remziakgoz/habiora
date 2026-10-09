@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Habiora — Grow your habits into a habitat</title>
-<meta name="description" content="Habiora turns every habit into a tree. Keep it up and your forest fills in. Coming soon to iPhone and Android — join the waitlist.">
+<meta name="description" content="Habiora turns every habit into a tree. Keep it up and your forest fills in. Out now on iPhone and iPad, Android coming soon.">
 <link rel="icon" href="images/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="canonical" href="https://habiora.co/">
 <meta property="og:title" content="Habiora — Grow your habits into a habitat">
-<meta property="og:description" content="Every habit is a tree. Keep it up and your forest fills in. Coming soon — join the waitlist.">
+<meta property="og:description" content="Every habit is a tree. Keep it up and your forest fills in. Out now on the App Store.">
 <meta property="og:image" content="https://habiora.co/images/og-v2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -116,10 +116,13 @@ header.stuck nav .btn{padding:.5rem 1.05rem; font-size:.9rem}
 .form-msg.err{color:#C0603F}
 
 .stores{display:flex; flex-wrap:wrap; gap:.7rem; margin-top:2.2rem}
+.final .stores{justify-content:center}
 .store{display:flex; align-items:center; gap:.65rem; border:1px dashed var(--line); background:rgba(253,251,246,.6); border-radius:16px; padding:.65rem 1.05rem; color:var(--muted)}
 .store svg{width:22px; height:22px; fill:currentColor; flex:none}
 .store span{display:block; font-size:.72rem; line-height:1.25; letter-spacing:.02em}
 .store strong{display:block; font-family:"Fredoka"; font-weight:600; font-size:1rem; color:var(--ink); line-height:1.2}
+a.store{border-style:solid; background:var(--ink); color:rgba(253,251,246,.75); text-decoration:none}
+a.store strong{color:#FDFBF6}
 
 /* phone */
 .phone-stage{position:relative; display:flex; justify-content:center; align-items:center}
@@ -281,7 +284,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
       <a href="#features">Features</a>
       <a href="#pricing">Plans</a>
       <a href="#faq">FAQ</a>
-      <a href="#waitlist" class="btn btn-ink">Join the waitlist</a>
+      <a href="https://apps.apple.com/app/id6817898705" class="btn btn-ink">Download</a>
     </nav>
   </div>
 </header>
@@ -292,30 +295,30 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="tagline reveal"><span class="dot"></span> Coming soon to iPhone and Android</span>
+      <span class="tagline reveal"><span class="dot"></span> Out now on iPhone · Android coming soon</span>
       <h1 class="reveal">Every habit you keep <span class="accent">becomes a tree.</span></h1>
       <p class="lede reveal">Habiora is a habit tracker you can actually see. Mark a habit today and its tree grows a little. Keep going and a bare patch of soil turns into your own forest.</p>
+
+      <div class="stores reveal">
+        <a class="store" href="https://apps.apple.com/app/id6817898705" aria-label="Download Habiora on the App Store">
+          <svg viewBox="0 0 24 24"><path d="M16.4 12.8c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.1-.8-2.1-3.6zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+          <div><span>Download on the</span><strong>App Store</strong></div>
+        </a>
+        <div class="store">
+          <svg viewBox="0 0 24 24"><path d="M1.4.9a1.5 1.5 0 0 0-.4 1.1v20a1.5 1.5 0 0 0 .4 1.1l11-11.1L1.4.9zM16.1 8.2 4.1.3 3.6.1l11 11.1 1.5-3zM16.1 15.8l-1.5-3-11 11.1.5-.2 12-7.9zM21.6 10.8l-3.9-2.2-1.8 3.6 1.8 3.6 3.9-2.3a1.5 1.5 0 0 0 0-2.7z"/></svg>
+          <div><span>Coming soon to</span><strong>Google Play</strong></div>
+        </div>
+      </div>
 
       <div class="waitlist reveal" id="waitlist">
         <form class="wl-form" novalidate>
           <label class="hp" for="company-hero">Leave this empty</label>
           <input class="hp" type="text" id="company-hero" name="_gotcha" tabindex="-1" autocomplete="off">
           <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
-          <button class="btn btn-mint" type="submit">Save my spot</button>
+          <button class="btn btn-mint" type="submit">Notify me</button>
         </form>
         <p class="form-msg" role="status" aria-live="polite"></p>
-        <p class="form-note">A few updates while we build, then one email on launch day. Unsubscribe anytime.</p>
-      </div>
-
-      <div class="stores reveal">
-        <div class="store">
-          <svg viewBox="0 0 24 24"><path d="M16.4 12.8c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.1-.8-2.1-3.6zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
-          <div><span>Coming soon to</span><strong>App Store</strong></div>
-        </div>
-        <div class="store">
-          <svg viewBox="0 0 24 24"><path d="M1.4.9a1.5 1.5 0 0 0-.4 1.1v20a1.5 1.5 0 0 0 .4 1.1l11-11.1L1.4.9zM16.1 8.2 4.1.3 3.6.1l11 11.1 1.5-3zM16.1 15.8l-1.5-3-11 11.1.5-.2 12-7.9zM21.6 10.8l-3.9-2.2-1.8 3.6 1.8 3.6 3.9-2.3a1.5 1.5 0 0 0 0-2.7z"/></svg>
-          <div><span>Coming soon to</span><strong>Google Play</strong></div>
-        </div>
+        <p class="form-note">On Android? Leave your email and we'll write once, the day Habiora is on Google Play. Unsubscribe anytime.</p>
       </div>
     </div>
 
@@ -485,22 +488,22 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
       </table>
     </div>
 
-    <p class="fineprint">Pro pricing is announced at launch and shown in your own currency on the App Store and Google Play.</p>
+    <p class="fineprint">Pro comes monthly, yearly with a 7-day free trial, or as a one-time lifetime purchase — priced in your own currency in the store.</p>
   </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
   <div class="wrap">
-    <h2 style="text-align:center">Questions before you sign up</h2>
+    <h2 style="text-align:center">Questions before you start</h2>
     <div class="faq">
       <details open>
-        <summary>When is Habiora out?</summary>
-        <p>It's in the last stretch of development now. Everyone on the waitlist hears the moment it's on the App Store, and gets the Android date as soon as it's set.</p>
+        <summary>Is Habiora out yet?</summary>
+        <p>Yes, on iPhone and iPad — <a href="https://apps.apple.com/app/id6817898705">download it from the App Store</a>. Android is in testing now; leave your email above and you'll hear the day it's on Google Play.</p>
       </details>
       <details>
-        <summary>Which platforms will it support?</summary>
-        <p>iPhone first, Android shortly after. One waitlist covers both — tell us which you're on when you get the email.</p>
+        <summary>Which platforms does it support?</summary>
+        <p>iPhone and iPad today, Android next.</p>
       </details>
       <details>
         <summary>What happens if I miss a day?</summary>
@@ -516,7 +519,7 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
       </details>
       <details>
         <summary>What do you do with my email?</summary>
-        <p>Only for Habiora — a few short updates while we're building it, then the email on launch day. We never share it with anyone, and every email has a one-click unsubscribe.</p>
+        <p>Only for Habiora — one email the day it's on Google Play. We never share it with anyone, and every email has a one-click unsubscribe.</p>
       </details>
     </div>
   </div>
@@ -526,16 +529,22 @@ footer{background:var(--forest-deep); color:#C6D3C2; padding:3.5rem 0 2.5rem; ma
 <section class="final" id="join">
   <div class="wrap">
     <h2>Plant the first one.</h2>
-    <p class="lede">Join the waitlist and you'll be growing your forest the day Habiora lands.</p>
+    <p class="lede">Habiora is on the App Store now. On Android? Leave your email and you'll be growing your forest the day it lands on Google Play.</p>
+    <div class="stores">
+      <a class="store" href="https://apps.apple.com/app/id6817898705" aria-label="Download Habiora on the App Store">
+        <svg viewBox="0 0 24 24"><path d="M16.4 12.8c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.1-.8-2.1-3.6zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+        <div><span>Download on the</span><strong>App Store</strong></div>
+      </a>
+    </div>
     <div class="waitlist">
       <form class="wl-form" novalidate>
         <label class="hp" for="company-final">Leave this empty</label>
         <input class="hp" type="text" id="company-final" name="_gotcha" tabindex="-1" autocomplete="off">
         <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
-        <button class="btn btn-mint" type="submit">Save my spot</button>
+        <button class="btn btn-mint" type="submit">Notify me</button>
       </form>
       <p class="form-msg" role="status" aria-live="polite"></p>
-      <p class="form-note">A few updates while we build, then one email on launch day. Unsubscribe anytime.</p>
+      <p class="form-note">One email, the day it's on Google Play. Unsubscribe anytime.</p>
     </div>
   </div>
 </section>
@@ -682,7 +691,7 @@ document.addEventListener("DOMContentLoaded", () => {
           throw new Error(res.status);
         }
         form.reset();
-        msg.textContent = "You're on the list. Watch your inbox on launch day.";
+        msg.textContent = "You're on the list. We'll email you the day Habiora is on Google Play.";
         msg.classList.add("ok");
       } catch (err) {
         msg.textContent = "That didn't go through. Try again, or email hello@habiora.co.";
